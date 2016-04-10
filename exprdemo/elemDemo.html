@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>核心部分 elem</title>
+    <script src="../js/jquery.js"></script>
+    <script language="JavaScript" type="text/javascript">
+        function jq() {
+            alert($(document).find("div>p").html());
+//            $(document.body).background("black");//此元素无效
+        }
+    </script>
+</head>
+<body>
+<p>one</p>
+<div>
+    <p>two</p>
+</div>
+<p>three</p>
+<a href="#" id="test" onclick="jq()">jquery</a>
+</body>
+</html>
