@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <title>select demo</title>
+    <script language="JavaScript" type="text/javascript">
+        $(function () {
+            var options=$("#test option:selected");
+            alert("拿到选中项的值:"+options.val());
+            alert("拿到选中项的文本:"+options.text());
+        });
+    </script>
+</head>
+<body>
+<select id="test"  name="">
+    <option   value="1">text1</option>
+    <option   value="2">text2</option>
+</select>
+</body>
+</html>
