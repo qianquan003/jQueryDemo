@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <title>dubbo rest 请求</title>
+<script>
+    $(function () {
+        $("#save").on("click", function () {
+            var params = $("#ff").serializeArray();
+            var j = {};
+            for (var item in params) {
+                j[params[item].name] = params[item].value;
+            }
+            $.ajax({
+                url: 'http://192.168.3.103:8080/xiProvider/channel/all',
+                data: JSON.stringify(j),
+                type: 'post',
+                dataType: 'json',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json;charset=utf-8"
+                },
+                processData: false,
+                cache: false
+            }).done(function (data) {
+            });
+
+        });
+    });
+</script>
+</head>
+<body>
+<form id="ff">
+    <input type="text" name="cpId"/>
+    <input type="text" name="cpName"/>
+    <input type="text" name="cpDescription"/>
+    <input type="text" name="cpStatus"/>
+    <input type="text" name="cpCreateTime"/>
+    <input type="text" name="cpUpdateTime"/>
+    <input type="text" name="cpCreateUserid"/>
+    <input type="text" name="cpUpdateUserid"/>
+    <input type="text" name="cpCreateUserip"/>
+    <input type="text" name="cpUpdateUserip"/>
+    <input type="button" id="save" value="save"/>
+</form>
+
+</body>
+</html>

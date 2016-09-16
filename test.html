@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    $("#save").on("click", function () {
+        var params = $("#ff").serializeArray();
+        var j = {};
+        for (var item in params) {
+            j[params[item].name] = params[item].value;
+        }
+
+        $.ajax({
+            url:'index.html',
+            data:JSON.stringify(j),
+            type:'post',
+            dataType:'json',
+            headers:{
+                Accept:"application/json",
+                "Content-Type":"application/json"
+            },
+            processData:false,
+            cache:false
+        }).done(function (data) {
+        });
+
+    });
+</script>
+<body>
+<form id="ff">
+    <input type="text" name="test1"/>
+    <input type="text" name="test2"/>
+    <input type="text" name="test3"/>
+    <input type="text" name="test4"/>
+    <input type="button" id="save" value="save"/>
+</form>
+</body>
+</html>
