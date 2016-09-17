@@ -1,0 +1,52 @@
+<html>
+<head>
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <title>新增评论</title>
+    <script>
+        $(function () {
+            $("#save").on("click", function () {
+                var params = $("#ff").serializeArray();
+                var j = {};
+                for (var item in params) {
+                    j[params[item].name] = params[item].value;
+                }
+                $.ajax({
+                    url: 'http://localhost:8080/blogProvider/comment/addComment',
+                    data: JSON.stringify(j),
+                    type: 'post',
+                    dataType: 'json',
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json; charset=utf-8"
+                    },
+                    processData: false,
+                    cache: false
+                }).done(function (data) {
+                    console.log("data.code:"+data.code);
+                    console.log("data.message:"+data.message);
+                    console.log("data.data:"+data.data);
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+hello,xiProvider!
+<form id="ff">
+    <input type="text" name="id"/>
+    <input type="text" name="sonId"/>
+    <input type="text" name="newsId"/>
+    <input type="text" name="myblogPic"/>
+    <input type="text" name="senderAuthor"/>
+    <input type="text" name="receiverAuthor"/>
+    <input type="text" name="myblogContent"/>
+    <input type="text" name="myblogStatus"/>
+    <input type="text" name="myblogFrom"/>
+    <input type="text" name="myblogIp"/>
+    <input type="text" name="myblogSystem"/>
+    <input type="button" id="save" value="save"/>
+</form>
+</body>
+</html>
